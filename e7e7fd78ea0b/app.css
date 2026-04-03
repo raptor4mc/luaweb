@@ -1,0 +1,358 @@
+:root {
+  --body_text_color: rgb(232, 234, 237);
+  --body_background: #212121;
+  --tab_body_text_color: rgb(232, 234, 237);
+  --tab_body_background_color: #212121;
+  --tab_color: #444;
+  --tab_selected_color: #777;
+}
+
+/* ---------------- CSS RESET ---------------- */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ---------------- END RESET ---------------- */
+
+.bodyclass {
+  width: 1080px;
+  max-width: 100%;
+  margin: auto;
+  color: var(--body_text_color);
+  background-color: var(--body_background);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+#top_div {
+  width: 100%;
+}
+
+#info_div {
+  width: 60%;
+  margin: auto;
+}
+
+#selector_div {
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+#lang_selector_div {
+  float: left;
+}
+
+#region_selector_div {
+  float: right;
+}
+
+#region_selector {
+  width: 240px;
+  height: 30px;
+  font-size: 16px;
+}
+
+#lang_selector {
+  width: 240px;
+  height: 30px;
+  font-size: 16px;
+}
+
+a:link {
+  color: #4d94ff;
+}
+
+a:visited {
+  color: #4d94ff;
+}
+
+.tab_all {
+  border: 1px solid var(--body_background);
+}
+
+.tab_headers {
+  width: 100%;
+}
+
+.tab_headers {
+  border: 0;
+  border-spacing: 0px;
+  border-collapse: separate;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.tab_headers td {
+  width: 25%;
+  padding: 0;
+}
+
+.tab_headers tbody {
+  width: 100%;
+}
+
+.tab {
+  background-color: var(--tab_color);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  width: 100%;
+}
+
+.active, .tab:hover {
+  color: white;
+  background-color: var(--tab_selected_color);
+}
+
+.tab_body {
+  color: var(--tab_body_text_color);
+  background-color: var(--tab_body_background_color);
+}
+
+.tab_content {
+  padding: 0;
+  margin: 0;
+}
+
+.gamediv {
+  margin: 0;
+  position: relative;
+  width: 270px;
+  height: 180px;
+  /* border: 2px solid var(--tab_body_background_color); */
+}
+
+.gamediv:hover .gamediv_dimmer {
+  /* border: 2px solid green; */
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.gamediv h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1.25em;
+    font-weight: 400;
+    line-height: 1;
+    font-weight: bold;
+    padding: 0;
+    margin: 5px;
+}
+
+.gamediv:hover h3 {
+    color: #add8e6;
+}
+
+.gamediv h3:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.launchbutton {
+  width: 200px;
+  height: 100px;
+  font-size: 20pt;
+}
+
+.launchprogress {
+  width: 200px;
+}
+
+.playcircle {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  left: 95px;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(0, 128, 0, 0.8);
+  border-radius: 50%;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTIyLjg4IDEyMi44OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTIyLjg4IDEyMi44OCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO308L3N0eWxlPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02MS40NCwwYzMzLjkzLDAsNjEuNDQsMjcuNTEsNjEuNDQsNjEuNDRzLTI3LjUxLDYxLjQ0LTYxLjQ0LDYxLjQ0UzAsOTUuMzcsMCw2MS40NFMyNy41MSwwLDYxLjQ0LDBMNjEuNDQsMHogTTgzLjMxLDY1LjI0YzMuMTMtMi4wMiwzLjEyLTQuMjcsMC02LjA2TDUwLjk4LDQwLjZjLTIuNTUtMS42LTUuMjEtMC42Ni01LjE0LDIuNjdsMC4xLDM3LjU1YzAuMjIsMy42MSwyLjI4LDQuNiw1LjMyLDIuOTMgTDgzLjMxLDY1LjI0TDgzLjMxLDY1LjI0eiBNNjEuNDQsMTIuNDhjMjcuMDQsMCw0OC45NiwyMS45Miw0OC45Niw0OC45NmMwLDI3LjA0LTIxLjkyLDQ4Ljk2LTQ4Ljk2LDQ4Ljk2UzEyLjQ4LDg4LjQ4LDEyLjQ4LDYxLjQ0IEMxMi40OCwzNC40LDM0LjQsMTIuNDgsNjEuNDQsMTIuNDhMNjEuNDQsMTIuNDh6Ii8+PC9nPjwvc3ZnPg==);
+}
+
+.playcircle:hover {
+  background-color: rgba(0, 255, 0, 1.0);
+}
+
+.gamediv:hover .playcircle {
+  display: block;
+}
+
+.gamegrid {
+  margin: auto;
+  border: 0;
+  border-spacing: 0px;
+  border-collapse: separate;
+}
+
+.gamegrid td {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+/* ------------------------------------------- */
+
+#multiplayer table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#multiplayer th {
+  border: 1px solid black;
+}
+
+#multiplayer tr {
+  height: 60px;
+}
+
+#multiplayer tr:hover {
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+#multiplayer td {
+  border: 1px solid black;
+}
+
+input:invalid + span::after {
+  content: "X";
+  color: red;
+}
+
+input:valid + span::after {
+  content: "OK";
+  color: green;
+}
+
+.bigbutton {
+  width: 300px;
+  height: 100px;
+  font-size: 30px;
+}
+
+.bigbutton:hover {
+  background-color: highlight;
+}
+
+#join_page {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#join_box {
+  background-color: #777;
+  width: 800px;
+  height: 400px;
+  border: 1px solid black;
+}
+
+select {
+  color: black;
+  background-color: #ddd;
+}
+
+input[type='text'] {
+  color: black;
+  background-color: #ddd;
+}
+
+#launch_page {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#launch_box {
+  background-color: #777;
+  width: 800px;
+  height: 400px;
+  border: 1px solid black;
+}
