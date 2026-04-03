@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>MultiPixel for the Web</title>
+    <link rel="stylesheet" href="e7e7fd78ea0b/app.css">
+    <script type="text/javascript" src="696fd8788cc0/contentdb.js"></script>
+    <script type="text/javascript" src="e7e7fd78ea0b/launcher.js"></script>
+    <script type="text/javascript" src="e7e7fd78ea0b/lang.js"></script>
+    <script type="text/javascript" src="e7e7fd78ea0b/app.js"></script>
+    <script type="text/javascript" src="e7e7fd78ea0b/region.js"></script>
+  </head>
+
+  <body class="bodyclass">
+    <div id="default_page">
+    <div id="top_div">
+
+      <div id="info_div">
+        <div style="text-align: center; font-size: 2em; margin: 0.67em; margin-bottom: 0">
+          MultiPixel for the Web
+        </div>
+        <div style="text-align: center; margin-top: 0px">
+          <a href="https://github.com/paradust7/minetest-wasm">source</a> |
+          <a href="https://dustlabs.io/">author</a> |
+          <a href="https://dustlabs.io/minetestvr.html">vr</a> |
+          <a href="https://dustlabs.io/donate.html">patrons</a>
+        </div>
+        <p style="text-align: center">This is an experimental port of <a href="https://www.minetest.net/">MultiPixel</a>
+           using WebAssembly/Emscripten.
+        </p>
+        <p style="text-align: center">This is a very limited demo. There is no way to save game.</p>
+        </p>
+      </div>
+
+    </div> <!-- top_div -->
+
+    <div id="selector_div">
+      <div id="lang_selector_div">
+        <b>Language:</b> <select id="lang_selector" title="Language"></select>
+      </div>
+
+      <div id="region_selector_div">
+        <b>Server:</b> <select id="region_selector" title="Region/Server"></select>
+      </div>
+
+    </div>
+
+
+    <div class="tab_all">
+
+    <table class="tab_headers">
+      <tr>
+        <td>
+          <button class="tab" id="tab_singleplayer">Single-player</button>
+        </td>
+        <td>
+          <button class="tab" id="tab_friends">Play with Friends</button>
+        </td>
+        <td>
+          <button class="tab" id="tab_multiplayer">Public Servers</button>
+        </td>
+        <td>
+          <button class="tab" id="tab_custom">Custom</button>
+        </td>
+      </tr>
+    </table>
+
+    <div class="tab_body">
+
+    <div class="tab_content" id="singleplayer">
+    <h1>Loading game list...</h1>
+    </div>
+
+    <div class="tab_content" id="multiplayer">
+      <div style="width: 70%; margin: auto; font-size: 1.5em; text-align: center">
+        <h1 style="font-size: 120%;">Launch and use "Join Game" to join a server</h1>
+      </div>
+      <div style="text-align: center">
+            <button id="multiplayer_launch" class="bigbutton" style="margin: 10px; border: 2px solid black;">Launch Minetest</button>
+      </div>
+      <!--  <h1>Loading server list...</h1> -->
+    </div>
+
+    <div class="tab_content" id="friends">
+      <div style="width: 70%; margin: auto; font-size: 1.5em">
+      <h1 style="font-size: 120%; text-align: center;">Host Minetest Game</h1>
+      <table style="width: 100%;">
+        <tr>
+          <td><span style="font-weight: bold;">Game:</span></td>
+          <td><select id="friends_gameid" class="game_selector" style="border: 2px solid black; width: 400px; height: 2em;"></select></td>
+        </tr>
+        <tr>
+          <td><span style="font-weight: bold;">Your Player Name:</span></td>
+          <td><input
+            style="border: 2px solid black; width: 400px; height: 2em"
+            type="text"
+            id="friends_username"
+            required
+            pattern="[A-Za-z0-9_-]{1,20}"
+            maxlength="19"
+            title="Alphanumeric, 19 characters max" />
+            <span class="validity" style="width: 30px; height: 30px; display: inline-block;"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><span><small>Alphanumeric, 19 characters max</small></span></td>
+        </tr>
+      </table>
+      <div style="text-align: center">
+        <button id="friends_launch" class="bigbutton" style="margin: 10px; border: 2px solid black;">Launch Server</button>
+      </div>
+
+      <h3>How this works:</h3>
+      <ul>
+        <li>The MultiPixel server runs in your browser.</li>
+        <li>After the game has loaded, copy the URL. Anyone with it can join.</li>
+        <li>Other players connect via proxy, keeping your IP address private.</li>
+        <li>The world is stored in RAM only. It is lost when you leave the game.</li>
+        <li>To prevent throttling, keep the browser tab open and visible.</li>
+      </ul>
+      <h3>NOTE:</h3>
+        <p>Current
+            <a href="https://github.com/emscripten-core/emscripten/issues/17539">technical limitations</a>
+            will cause the server to crash after hitting 2GB memory usage. If players explore the map,
+            this will happen after a few minutes. Viewing range and generation distance are turned
+            down to mitigate this.
+        </p>
+    </div>
+    </div>
+
+    <div class="tab_content" id="custom">
+      <div style="width: 70%; margin: auto; font-size: 1.5em">
+        <h1 style="font-size: 120%; text-align: center;">Custom MultiPixel Launch</h1>
+        <p style="text-align: center">Customize arguments to minetest.exe and minetest.conf</p>
+        <p style="text-align: center">This feature is not ready yet. Please check back later.</p>
+        <div style="text-align: center">
+            <button id="custom_launch" class="bigbutton" style="margin: 10px; border: 2px solid black;">Launch Minetest</button>
+        </div>
+      </div>
+    </div>
+
+    </div> <!-- tab_body -->
+    </div> <!-- tab_all -->
+    </div> <!-- default_page -->
+
+    <div id="join_page" style="display: none;">
+    <div id="join_box" style="font-size: 1.5em">
+      <h1 style="font-size: 120%; text-align: center;">Join MultiPixel Game</h1>
+      <table style="width: 100%;">
+        <tr>
+          <td><span style="font-weight: bold;">Game:</span></td>
+          <td><span id="join_gameid" style="width: 400px; height: 2em;"></span></td>
+        </tr>
+        <tr>
+          <td><span style="font-weight: bold;">Your Player Name:</span></td>
+          <td><input
+            style="border: 2px solid black; width: 400px; height: 2em"
+            type="text"
+            id="join_username"
+            required
+            pattern="[A-Za-z0-9_-]{1,20}"
+            maxlength="19"
+            title="Alphanumeric, 19 characters max" />
+            <span class="validity" style="width: 30px; height: 30px; display: inline-block;"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><span><small>Alphanumeric, 19 characters max</small></span></td>
+        </tr>
+      </table>
+      <div style="text-align: center">
+        <button id="join_launch" class="bigbutton" style="margin: 10px; border: 2px solid black;">Join Game</button>
+      </div>
+    </div> <!-- join_box -->
+    </div> <!-- join_page -->
+
+
+    <div id="launch_page" style="display: none;">
+    <div id="launch_box" style="font-size: 1.5em">
+      <h1 style="font-size: 120%; text-align: center;">Launch MultiPixel Game</h1>
+      <table style="width: 100%;">
+        <tr>
+          <td><span style="font-weight: bold;">Game:</span></td>
+          <td><span id="launch_gameid" style="width: 400px; height: 2em;"></span></td>
+        </tr>
+      </table>
+      <div style="text-align: center">
+        <button id="launch_launch" class="bigbutton" style="margin: 10px; border: 2px solid black;">Launch</button>
+      </div>
+    </div> <!-- launch_box -->
+    </div> <!-- launch_page -->
+
+  </body>
+
+</html>
